@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EL_Areff.Comapny.DAL.Data.Configration
 {
-    internal class DepartmentConfigration : IEntityTypeConfiguration<Department>
+    public class DepartmentConfigration : IEntityTypeConfiguration<Department>
     {
         public void Configure(EntityTypeBuilder<Department> builder)
         {

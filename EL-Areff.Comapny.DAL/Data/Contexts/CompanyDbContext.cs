@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EL_Areff.Comapny.DAL.Data.Contexts
 {
-    internal class CompanyDbContext :DbContext
+    public class CompanyDbContext :DbContext
     {
         public CompanyDbContext() : base()
         {

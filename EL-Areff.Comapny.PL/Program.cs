@@ -1,3 +1,9 @@
+using EL_Areff.Comapny.BLL.Iterfaces;
+using EL_Areff.Comapny.BLL.Repositories;
+using EL_Areff.Comapny.DAL.Data.Contexts;
+using EL_Areff.Comapny.DAL.Model;
+using Microsoft.EntityFrameworkCore;
+
 namespace EL_Areff.Comapny.PL
 {
     public class Program
@@ -8,8 +14,13 @@ namespace EL_Areff.Comapny.PL
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            builder.Services.AddDbContext<CompanyDbContext>(options => 
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
 
-            var app = builder.Build();
+            var app = builder.Build(); 
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())

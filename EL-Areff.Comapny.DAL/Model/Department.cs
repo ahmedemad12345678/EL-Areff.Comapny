@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace EL_Areff.Comapny.DAL.Model
 {
-    public class Department
+    public class Department : BaseEntity
     {
-        public int Id { get; set; }
         public string? Code { get; set; }
-        public string? Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         public DateTime CraeteAt { get; set; }
     }

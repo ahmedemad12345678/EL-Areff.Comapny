@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace EL_Areff.Comapny.DAL.Model
 {
-    public class Employee
+    public class Employee : BaseEntity
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+
+        public string Name { get; set; } = string.Empty;
         public int? Age { get; set; }
-        public string Email { get; set; }
-        public string Address { get; set; }
-        public string Phone { get; set; }
+        public string Email { get; set; } = string.Empty;
+        public string Address { get; set; } = string.Empty;
+        public string Phone { get; set; } = string.Empty;
         public decimal Salary { get; set; }
-        public bool IsActive { get; set; }
-        public bool IsDeleted { get; set; }
-        public DateTime HiringDate { get; set; }
-        public DateTime CreateAt { get; set; }
+        public bool IsActive { get; set; } = true;
+        public bool IsDeleted { get; set; }=false;
+        public DateTime HiringDate { get; set; }= DateTime.Now;
+        public DateTime CreateAt { get; set; }= DateTime.Now;
     }
 }

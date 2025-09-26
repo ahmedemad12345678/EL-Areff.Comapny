@@ -10,46 +10,13 @@ using System.Threading.Tasks;
 
 namespace EL_Areff.Comapny.BLL.Repositories
 {
-    public class EmployeeRepository : IEmployeeRepository
+    public class EmployeeRepository : GenaricRepository<Employee>, IEmployeeRepository
     {
-        private readonly CompanyDbContext _context;
-
-        public EmployeeRepository(CompanyDbContext context)
+        public EmployeeRepository(CompanyDbContext context) : base(context)
         {
-            this._context = context;
-        }
-         
-        public IEnumerable<Employee> GetAll()
-        {
-            return _context.Em.ToList();
-        }
-
-        public Employee? Get(int id)
-        {
-            return _context.Em.Find();
-        }
-
-        public int Add(Employee model)
-        {
-            _context.Em.Add(model);
-            return _context.SaveChanges();
         }
 
 
-        public int Update(Employee model)
-        {
-            _context.Em.Update(model);
-            return _context.SaveChanges();
-        }
-
-        public int Delete(Employee model)
-        {
-            _context.Em.Remove(model);
-            return _context.SaveChanges();
-        }
-
-     
-       
 
     }
 }

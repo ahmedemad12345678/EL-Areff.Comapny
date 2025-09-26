@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace EL_Areff.Comapny.BLL.Iterfaces
 {
-    public interface IEmployeeRepository
+    public interface IEmployeeRepository :IGenaricRepository<Employee>
     {
-        IEnumerable<Employee> GetAll();
-        Employee? Get(int id);
-        int Add(Employee model);
-        int Update(Employee model);
-        int Delete(Employee model);
+        //IEnumerable<Employee> GetAll();
+        //Employee? Get(int id);
+        //int Add(Employee model);
+        //int Update(Employee model);
+        //int Delete(Employee model);
     }
 }

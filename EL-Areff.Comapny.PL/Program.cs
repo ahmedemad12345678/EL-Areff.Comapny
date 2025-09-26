@@ -1,4 +1,4 @@
-using EL_Areff.Comapny.BLL.Iterfaces;
+﻿using EL_Areff.Comapny.BLL.Iterfaces;
 using EL_Areff.Comapny.BLL.Repositories;
 using EL_Areff.Comapny.DAL.Data.Contexts;
 using EL_Areff.Comapny.DAL.Model;
@@ -44,4 +44,5 @@ namespace EL_Areff.Comapny.PL
             app.Run();
         }
     }
+
 }

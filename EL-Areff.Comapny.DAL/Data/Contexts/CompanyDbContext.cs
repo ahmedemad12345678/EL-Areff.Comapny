@@ -20,6 +20,8 @@ namespace EL_Areff.Comapny.DAL.Data.Contexts
         //    optionsBuilder.UseSqlServer("Server=.;Database=CompanyElAref;Trusted_Connection=True;TrustServerCertificate=True;");
         //}
         public DbSet<Department> Departments { get; set; }
+        public DbSet<Employee> Em { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

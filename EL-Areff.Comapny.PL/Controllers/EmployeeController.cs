@@ -64,17 +64,48 @@ namespace EL_Areff.Comapny.PL.Controllers
 
         public IActionResult Update(int? id)
         {
-            
-            return Details(id, "Update");
+            if(id is null) BadRequest("Invalid Id");
+            var emp = _employeeRepository.Get(id.Value);
+            if (emp is null) return NotFound("Not Found");
+
+            var employeeDTO = new CreateEmployeeTDO()
+            {
+                
+                Name = emp.Name,
+                Age = emp.Age,
+                Email = emp.Email,
+                Address = emp.Address,
+                CreateAt = emp.CreateAt,
+                HiringDate = emp.HiringDate,
+                IsActive = emp.IsActive,
+                IsDeleted = emp.IsDeleted,
+                Phone = emp.Phone,
+                Salary = emp.Salary
+            };
+
+            return View(employeeDTO);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update([FromRoute] int id, Employee model)
+        public IActionResult Update([FromRoute] int id, CreateEmployeeTDO model)
         {
             if (ModelState.IsValid)
             {
-                if (id != model.Id) return BadRequest();
-                var result = _employeeRepository.Update(model);
+                var employee = new Employee()
+                {
+                    Id=id,
+                    Name = model.Name,
+                    Age = model.Age,
+                    Email = model.Email,
+                    Address = model.Address,
+                    CreateAt = model.CreateAt,
+                    HiringDate = model.HiringDate,
+                    IsActive = model.IsActive,
+                    IsDeleted = model.IsDeleted,
+                    Phone = model.Phone,
+                    Salary = model.Salary
+                };
+                var result = _employeeRepository.Update(employee);
                 if (result > 0)
                 {
                     return RedirectToAction(nameof(Index));

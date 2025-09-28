@@ -8,20 +8,8 @@
 <br />
 
 <div>
-    <div class="my-3">
-        <label asp-for="Code" class="col-form-label"></label>
-        <input readonly asp-for="Code" class="form-control" />
-    </div>
+    <partial name="DepartmentPartialView/_DetailsDeletePartialView" />
 
-    <div class="my-3">
-        <label asp-for="Name" class="col-form-label"></label>
-        <input readonly asp-for="Name" class="form-control" />
-    </div>
-
-    <div class="my-3">
-        <label asp-for="CraeteAt" class="col-form-label"></label>
-        <input readonly asp-for="CraeteAt" class="form-control" />
-    </div>
 
     <divclass ="my-3">
         <a asp-action="Edit" class="btn btn-warning">Edit</a>

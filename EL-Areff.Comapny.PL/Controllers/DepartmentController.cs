@@ -63,10 +63,19 @@ namespace EL_Areff.Comapny.PL.Controllers
         [HttpGet]
         public IActionResult Update(int? id)
         {
-            //if(id is null) return BadRequest("invalid Id");
-            //var result =_departmentRepository.Get(id.Value);
-            //if (result is null) return NotFound(new { StatusCode = 400, Message = $"department with id {id} id not found" });
-            return Details(id, "Update");
+            if (id is null) return BadRequest("invalid Id");
+            var result = _departmentRepository.Get(id.Value);
+            if (result is null) return NotFound(new { StatusCode = 400, Message = $"department with id {id} id not found" });
+
+            var department = new CreateDepartmentDto()
+            {
+                Code = result.Code,
+                Name = result.Name,
+                CraeteAt = result.CraeteAt,
+            };
+
+
+            return View(department);
         }
 
         [HttpPost]
@@ -75,8 +84,15 @@ namespace EL_Areff.Comapny.PL.Controllers
         {
             if(ModelState.IsValid)
             {
-                if (id != model.Id) return BadRequest();
-                var result = _departmentRepository.Update(model);
+                //if (id != model.Id) return BadRequest();
+                var department = new Department()
+                {
+                    Id = id,
+                    Code = model.Code,
+                    Name = model.Name,
+                    CraeteAt = model.CraeteAt,
+                };
+                var result = _departmentRepository.Update(department);
                 if (result > 0)
                 {
                     return RedirectToAction(nameof(Index));
